@@ -12,6 +12,7 @@
 
 <script>
 import TopHeader from "../components/TopHeader";
+import request from '../api/request'
 export default {
   components: {
     TopHeader,
@@ -40,7 +41,13 @@ export default {
         alert("登录成功！")
         this.$router.push('/home')
       }
-    }
+    },
+  },
+  mounted() {
+      request.get('/users/getUserInfo').then((res)=>{
+        // console.log(res);
+        console.log(JSON.stringify(res.data));
+      })
   },
 };
 </script>
